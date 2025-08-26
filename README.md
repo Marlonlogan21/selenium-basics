@@ -44,16 +44,7 @@ You should see "Test passed ✅" in the terminal.
 
 The screenshot will be saved as homepage.png.
 
-📷 Screenshot
-📸 View Screenshot
-https://drive.google.com/file/d/1wyps8JLTeJkdERTxkDGw4KIDh9mlVoUU/view?usp=sharing
-
-🎥 Screen Recording 
-▶ Watch Recording
-https://drive.google.com/file/d/18JzERWTK-NNTY1WF6EcFzAfwON0iyETs/view?usp=sharing
-
-🧠 How the Script Works
-Import Libraries: Loads Selenium WebDriver modules.
+🧠 How the Script Works: 
 
 Launch Chrome: Uses webdriver.Chrome() to start the browser.
 
