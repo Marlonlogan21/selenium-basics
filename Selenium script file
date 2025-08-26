@@ -1,0 +1,49 @@
+# basic_selenium_test.py
+"""
+Assignment: Introduction to Selenium WebDriver
+Task:
+- Open a browser
+- Navigate to https://www.wikipedia.org
+- Validate the page title contains "Wikipedia"
+- Take a screenshot named "homepage.png"
+- Close the browser
+"""
+
+import os
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+
+def main():
+    # ---- Configure Chrome ----
+    options = Options()
+    # Optional: run headless if you set HEADLESS=1
+    if os.getenv("HEADLESS", "0") == "1":
+        options.add_argument("--headless=new")
+    options.add_argument("--window-size=1366,768")
+
+    # ---- Start the browser ----
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),
+                              options=options)
+    try:
+        # ---- Navigate ----
+        url = "https://www.wikipedia.org"
+        driver.get(url)
+
+        # ---- Validate title ----
+        title = driver.title
+        assert "Wikipedia" in title, f'Expected "Wikipedia" in title, got "{title}"'
+        print(f"[OK] Title validated: {title}")
+
+        # ---- Screenshot ----
+        driver.save_screenshot("homepage.png")
+        print("[OK] Screenshot saved as homepage.png")
+
+    finally:
+        # ---- Close the browser ----
+        driver.quit()
+        print("[OK] Browser closed")
+
+if __name__ == "__main__":
+    main()
